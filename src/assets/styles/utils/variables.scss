@@ -1,0 +1,22 @@
+$color-accent: #B40006;
+
+$color-text-primary: #C7CCD1;
+$color-text-secondary: rgba(#fff, 0.6);
+
+$color-bg: #1F1F21;
+$color-bg-seconadry: #2D2D2F;
+
+$font-regular: 16px;
+
+$grid-columns: 12 !default;
+$grid-rows: 6 !default;
+$grid-gap: 15px !default;
+$grid-row-height: 50px !default;
+$grid-auto-layout: true !default;
+
+$grid-breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
