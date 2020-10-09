@@ -1,0 +1,60 @@
+@import "../../assets/styles/utils/mixins.scss";
+@import "../../assets/styles/utils/variables.scss";
+
+.menu-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  height: 16px;
+  width: 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+  $self: &;
+
+  @include breakpoint-up(md) {
+    display: none;
+  }
+
+  &--active {
+    #{$self}__line:first-of-type {
+      transform: rotate(-45deg) translateY(-50%);
+      top: 50%;
+    }
+
+    #{$self}__line:nth-child(2) {
+      width: 0;
+      opacity: 0;
+    }
+
+    #{$self}__line:last-of-type {
+      top: 50%;
+      transform: rotate(45deg) translateY(-50%);
+    }
+  }
+
+  &__line {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    transition: all 0.12s ease-in-out;
+    transform-origin: 50%;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      top: 100%;
+    }
+  }
+}

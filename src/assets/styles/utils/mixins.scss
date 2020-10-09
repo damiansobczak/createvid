@@ -1,5 +1,11 @@
 @import "./variables.scss";
 
+@mixin container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// Responsiveness
 @mixin breakpoint-up($key) {
   @if map-has-key($grid-breakpoints, $key) {
     @media (min-width: map-get($grid-breakpoints, $key)) {
