@@ -1,0 +1,153 @@
+@import "../../assets/styles/utils/variables.scss";
+@import "../../assets/styles/utils/mixins.scss";
+
+.slider {
+  height: 700px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: -100px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: background-image 0.2s ease-in-out;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(-90deg, $color-bg, rgba($color-bg, 0));
+    z-index: -1;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba($color-bg, 0), rgba($color-bg, 0.5), $color-bg);
+    z-index: -1;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    flex: 1;
+    position: relative;
+    @include container;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s cubic-bezier(0.73, 0.02, 0.35, 1);
+  }
+
+  &__item {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    color: $color-text-primary;
+  }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+  }
+
+  &__tag {
+    padding: 8px 16px;
+    background-color: rgba($color-bg-secondary, 0.5);
+    border-radius: 4px;
+
+    &:first-child {
+      margin-right: 8px;
+    }
+  }
+
+  &__title {
+    font-size: 64px;
+    line-height: 1.4;
+  }
+
+  &__desc {
+    max-width: 600px;
+    color: $color-text-secondary;
+    font-size: 20px;
+  }
+
+  &__navs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9999;
+    width: calc(100% - 64px);
+  }
+
+  &__nav {
+    color: #fff;
+    font-size: $font-large;
+    border: 0;
+    box-shadow: none;
+    height: 64px;
+    width: 64px;
+    border-radius: 8px;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    &--disable {
+      opacity: 0.2;
+      cursor: default;
+    }
+  }
+
+  &__actions {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__action {
+    border: 0;
+    color: #fff;
+    height: 64px;
+    padding: 0 24px;
+    border-radius: 6px;
+    background-color: $color-accent;
+    font-size: $font-regular;
+    outline: 0;
+    cursor: pointer;
+    transition: opacity 0.12s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:last-child {
+      margin-left: 24px;
+    }
+
+    &--secondary {
+      background-color: $color-bg-secondary;
+    }
+
+    span {
+      margin: 0 4px;
+    }
+  }
+}

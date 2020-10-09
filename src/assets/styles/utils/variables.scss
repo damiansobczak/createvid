@@ -1,14 +1,16 @@
-$color-accent: #B40006;
+$color-accent: #b40006;
 
 $color-text-primary: #fff;
 $color-text-secondary: rgba(#fff, 0.6);
 
-$color-bg: #1F1F21;
-$color-bg-seconadry: #2D2D2F;
+$color-bg: #1f1f21;
+$color-bg-secondary: #2d2d2f;
 
 $font-tiny: 10px;
 $font-small: 13px;
 $font-regular: 16px;
+$font-large: 24px;
+$font-xlarge: 40px;
 
 $grid-columns: 12 !default;
 $grid-rows: 6 !default;
@@ -20,5 +22,5 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 ) !default;
