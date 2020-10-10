@@ -1,0 +1,107 @@
+@import "../../assets/styles/utils/variables";
+@import "../../assets/styles/utils/mixins";
+
+.featured {
+  position: relative;
+  margin: -80px 0 80px;
+  overflow: hidden;
+  z-index: 1;
+  $self: &;
+
+  &:hover {
+    #{$self}__nav {
+      opacity: 1;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    @include container;
+  }
+
+  &__title {
+    position: relative;
+    color: $color-text-primary;
+    font-size: $font-regular;
+    text-transform: uppercase;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      width: 40%;
+      height: 4px;
+      border-radius: 8px;
+      background-color: $color-accent;
+    }
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    border: 0;
+    color: #fff;
+    height: 48px;
+    padding: 0 16px 0 24px;
+    border-radius: 6px;
+    background-color: $color-bg-secondary;
+    font-size: $font-regular;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.12s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    span {
+      margin: 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__items {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    position: relative;
+    height: 320px;
+    transition: transform 0.3s cubic-bezier(0.73, 0.02, 0.35, 1);
+    @include container;
+    margin: 24px auto 0;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 124px;
+    left: calc(64px - 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 64px;
+    border-radius: 6px;
+    border: 0;
+    outline: 0;
+    font-size: $font-regular;
+    color: $color-text-primary;
+    background-color: $color-bg-secondary;
+    opacity: 0;
+    transition: opacity 0.12s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--right {
+      left: initial;
+      right: calc(64px - 32px);
+    }
+  }
+}
