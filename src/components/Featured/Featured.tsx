@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import "./Featured.scss";
 import { Link } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
@@ -39,11 +39,11 @@ export default function Featured() {
         </Link>
       </div>
       <div className="featured__items" style={{ transform: `translateX(calc(${slide * 26 * -1}% - ${16 * slide}px)` }}>
-        {films.map((details: IFilmsItemAPI, index: number) => {
-          if (index < limit) {
-            return <FeaturedItem key={details.id.label} {...details} />;
-          }
-        })}
+        {films.map(
+          (details: IFilmsItemAPI, index: number): ReactElement => (
+            <FeaturedItem key={details.id.label} {...details} />
+          )
+        )}
       </div>
       <button className="featured__nav" onClick={slideLeft}>
         <span className="icon-chevron-left"></span>

@@ -14,17 +14,17 @@ export default function FeaturedItem(props: IFeaturedItem) {
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setTime(
-      setTimeout(async () => {
+      setTimeout(() => {
         setMedia(Media.video);
-        const vid = await el.current?.play();
+        el.current?.play();
       }, 600)
     );
   };
 
-  const handleMouseLeave = async (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (time) {
       setMedia(Media.thumbnail);
-      const vid = await el.current?.pause();
+      el.current?.pause();
       clearTimeout(time);
       setTime(null);
     }
