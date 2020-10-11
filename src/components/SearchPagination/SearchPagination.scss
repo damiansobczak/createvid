@@ -1,0 +1,32 @@
+@import "../../assets/styles/utils/variables";
+@import "../../assets/styles/utils/mixins";
+
+.search-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 24px 0;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $color-text-primary;
+    background-color: $color-bg-secondary;
+    height: 64px;
+    width: 64px;
+    border-radius: 6px;
+    margin: 0 4px;
+    transition: opacity 0.12s ease-in-out;
+    font-size: $font-regular;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--active {
+      background-color: $color-accent;
+    }
+  }
+}

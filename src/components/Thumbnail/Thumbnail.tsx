@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
-import { IFeaturedItem } from "./Interfaces";
-import "./FeaturedItem.scss";
+import { IThumbnailItem } from "./Interfaces";
+import "./Thumbnail.scss";
 
 enum Media {
   thumbnail = "thumbnail",
   video = "video",
 }
 
-export default function FeaturedItem(props: IFeaturedItem) {
+export default function Thumbnail(props: IThumbnailItem) {
   const el = useRef<HTMLVideoElement>(null);
   const [media, setMedia] = useState<Media>(Media.thumbnail);
   const [time, setTime] = useState<any>(null);
@@ -31,27 +31,27 @@ export default function FeaturedItem(props: IFeaturedItem) {
   };
 
   return (
-    <div className="featured-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className={`thumbnail ${props.isHover && `thumbnail--hover`}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {media === Media.thumbnail ? (
-        <img className="featured-item__media" src={props["im:image"][2].label} alt={props["im:name"].label} />
+        <img className="thumbnail__media" src={props["im:image"][2].label} alt={props["im:name"].label} />
       ) : (
-        <video className="featured-item__media" width="100" height="100" ref={el}>
+        <video className="thumbnail__media" width="100" height="100" ref={el}>
           <source src={props.link[1].attributes.href} type={props.link[1].attributes.type} />
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="featured-item__header">
-        <button className="featured-item__action">
+      <div className="thumbnail__header">
+        <button className="thumbnail__action">
           <span className="icon-thumbs-up"></span>
         </button>
-        <button className="featured-item__action">
+        <button className="thumbnail__action">
           <span className="icon-thumbs-down"></span>
         </button>
-        {props["im:rentalPrice"]?.label && <div className="featured-item__price">{props["im:rentalPrice"].label}</div>}
+        {props["im:rentalPrice"]?.label && <div className="thumbnail__price">{props["im:rentalPrice"].label}</div>}
       </div>
-      <div className="featured-item__footer">
-        <div className="featured-item__title">{props["im:name"].label}</div>
-        <div className="featured-item__info">
+      <div className="thumbnail__footer">
+        <div className="thumbnail__title">{props["im:name"].label}</div>
+        <div className="thumbnail__info">
           {props.category.attributes.label} / {props["im:releaseDate"].attributes.label}
         </div>
       </div>

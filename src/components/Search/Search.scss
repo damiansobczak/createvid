@@ -1,0 +1,17 @@
+@import "../../assets/styles/utils/variables";
+@import "../../assets/styles/utils/mixins";
+
+.search {
+  @include container;
+
+  &__header {
+    text-align: center;
+    color: $color-text-primary;
+    max-width: 600px;
+    margin: 0 auto;
+
+    p {
+      margin-top: 12px;
+    }
+  }
+}

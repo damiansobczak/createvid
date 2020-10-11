@@ -1,4 +1,4 @@
-export interface IFeaturedItem {
+export interface IThumbnailItem {
   "im:name": {
     label: string;
   };
@@ -75,4 +75,5 @@ export interface IFeaturedItem {
       label: string;
     };
   };
+  isHover: boolean;
 }

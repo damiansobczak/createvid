@@ -1,9 +1,9 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Featured.scss";
 import { Link } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
 import { IFilmsAPI, IFilmsItemAPI, IFilmsItemsAPI } from "./Interfaces";
-import FeaturedItem from "../FeaturedItem/FeaturedItem";
+import Thumbnail from "../Thumbnail/Thumbnail";
 
 export default function Featured() {
   const [films, setFilms] = useState<IFilmsItemsAPI>([]);
@@ -38,12 +38,8 @@ export default function Featured() {
           <span className="icon-arrow-right"></span>
         </Link>
       </div>
-      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 26 * -1}% - ${16 * slide}px)` }}>
-        {films.map(
-          (details: IFilmsItemAPI, index: number): ReactElement => (
-            <FeaturedItem key={details.id.label} {...details} />
-          )
-        )}
+      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 28 * -1}% - ${16 * slide}px)` }}>
+        {films.map((details: IFilmsItemAPI, index: number) => index < 10 && <Thumbnail key={details.id.label} isHover={true} {...details} />)}
       </div>
       <button className="featured__nav" onClick={slideLeft}>
         <span className="icon-chevron-left"></span>

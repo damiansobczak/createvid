@@ -1,0 +1,47 @@
+@import "../../assets/styles/utils/variables";
+@import "../../assets/styles/utils/mixins";
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0;
+
+  &__input,
+  &__select,
+  &__submit {
+    border: 0;
+    outline: 0;
+    color: $color-text-primary;
+    height: 64px;
+    padding: 0 24px;
+    border-radius: 6px;
+    background-color: $color-bg-secondary;
+    font-size: 16px;
+    transition: opacity 0.12s ease-in-out;
+  }
+
+  &__input {
+    width: 380px;
+  }
+
+  &__select {
+    width: 160px;
+    margin: 0 8px;
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    background-color: $color-accent;
+    transition: opacity 0.12s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    span {
+      margin-right: 8px;
+    }
+  }
+}
