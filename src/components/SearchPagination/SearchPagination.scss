@@ -4,8 +4,35 @@
 .search-pagination {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin: 24px 0;
+  justify-content: space-between;
+  margin: 40px 0;
+
+  &__total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $color-text-secondary;
+    background-color: $color-bg-secondary;
+    height: 64px;
+    padding: 0 24px;
+    border-radius: 6px;
+    margin: 0 4px;
+    transition: opacity 0.12s ease-in-out;
+    font-size: $font-regular;
+
+    span {
+      margin-left: 8px;
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
   &__btn {
     display: flex;

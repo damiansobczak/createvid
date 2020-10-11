@@ -1,18 +1,27 @@
 import React from "react";
 import "./SearchPagination.scss";
 
-export default function SearchPagination() {
+export default function SearchPagination(props: { filmsPerPage: number; totalFilmsNumber: number; currentPage: number; changePage: Function }) {
+  const pages: Array<number> = [];
+  for (let i = 1; i <= Math.ceil(props.totalFilmsNumber / props.filmsPerPage); i++) {
+    pages.push(i);
+  }
+
   return (
     <div className="search-pagination">
-      <button className="search-pagination__btn">
-        <span className="icon-chevron-left"></span>
-      </button>
-      <button className="search-pagination__btn search-pagination__btn--active">1</button>
-      <button className="search-pagination__btn">2</button>
-      <button className="search-pagination__btn">3</button>
-      <button className="search-pagination__btn">
-        <span className="icon-chevron-right"></span>
-      </button>
+      <div className="search-pagination__total">
+        Total results: <span>{props.totalFilmsNumber}</span>
+      </div>
+      <div className="search-pagination__nav">
+        {pages.map((number: number) => (
+          <button
+            onClick={() => props.changePage(number)}
+            className={`search-pagination__btn ${props.currentPage === number && `search-pagination__btn--active`}`}
+          >
+            {number}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
