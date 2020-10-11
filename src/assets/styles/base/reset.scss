@@ -124,8 +124,9 @@ table {
   border-spacing: 0;
 }
 button {
-  outline: none;
-  border: none;
+  outline: 0;
+  border: 0;
   box-shadow: none;
   background: transparent;
+  cursor: pointer;
 }

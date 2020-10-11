@@ -77,12 +77,14 @@
 
   &__title {
     font-size: 64px;
+    font-weight: 700;
     line-height: 1.4;
   }
 
   &__desc {
     max-width: 600px;
     color: $color-text-secondary;
+    line-height: 1.3;
     font-size: 20px;
   }
 

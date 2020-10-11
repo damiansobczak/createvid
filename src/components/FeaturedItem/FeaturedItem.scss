@@ -2,6 +2,8 @@
 @import "../../assets/styles/utils/mixins";
 
 .featured-item {
+  display: flex;
+  flex-direction: column;
   min-width: 26%;
   width: 26%;
   height: 320px;
@@ -11,12 +13,18 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.73, 0.02, 0.35, 1);
+  $self: &;
 
   &:hover {
     min-width: 600px;
     width: 600px;
     height: 360px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+    #{$self}__action,
+    #{$self}__price {
+      opacity: 1;
+    }
   }
 
   &__media {
@@ -24,5 +32,77 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 16px;
+  }
+
+  &__action {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    color: $color-text-primary;
+    font-size: $font-regular;
+    background-color: rgba($color-bg, 0.5);
+    transition: all 0.12s ease-in-out;
+    opacity: 0;
+
+    &:hover {
+      background-color: $color-accent;
+    }
+
+    &:first-child {
+      margin-right: 12px;
+    }
+  }
+
+  &__price {
+    background-color: $color-accent;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-left: auto;
+    color: $color-text-primary;
+    opacity: 0;
+  }
+
+  &__footer {
+    position: relative;
+    z-index: 1;
+    padding: 32px 16px;
+    margin-top: auto;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      height: calc(100% + 32px);
+      width: calc(100% + 16px);
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: $color-text-primary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  &__info {
+    color: $color-text-primary;
+    margin-top: 8px;
+    opacity: 0.7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
   }
 }
