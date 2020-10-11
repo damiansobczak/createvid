@@ -1,6 +1,7 @@
 @import "./assets/styles/base/reset.scss";
 @import "./assets/styles/utils/variables.scss";
 @import "./assets/styles/base/fonts.scss";
+@import "./assets/styles/utils/grid.scss";
 
 body {
   padding: 0;
@@ -17,9 +18,23 @@ h1 {
   margin: 0;
 }
 
+h5 {
+  font-size: 40px;
+  font-weight: 600;
+  color: $color-text-primary;
+  line-height: 1.1;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
 p {
   font-size: $font-regular;
   margin: 0;
+  line-height: 1.5;
 }
 // Proxima Nova Bold
 
