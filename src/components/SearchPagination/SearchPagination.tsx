@@ -17,6 +17,7 @@ export default function SearchPagination(props: { filmsPerPage: number; totalFil
           <button
             onClick={() => props.changePage(number)}
             className={`search-pagination__btn ${props.currentPage === number && `search-pagination__btn--active`}`}
+            key={number}
           >
             {number}
           </button>

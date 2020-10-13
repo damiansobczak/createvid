@@ -34,3 +34,33 @@ export const SliderAPI: ISliderItemsAPI = [
     image: Slider,
   },
 ];
+
+export interface INotificationsAPI {
+  id: number;
+  title: string;
+  desc: string;
+  thumbnail: string;
+}
+
+export interface INotificationsItemsAPI extends Array<INotificationsAPI> {}
+
+export const NotificationsAPI = [
+  {
+    id: 0,
+    title: "Big Mick (2002)",
+    desc: "Nowości w ofercie filmów",
+    thumbnail: Slider,
+  },
+  {
+    id: 1,
+    title: "Love Island (2020)",
+    desc: "Nowości w ofercie filmów",
+    thumbnail: Slider,
+  },
+  {
+    id: 2,
+    title: "Matrix (2002)",
+    desc: "Nowości w ofercie filmów",
+    thumbnail: Slider,
+  },
+];
