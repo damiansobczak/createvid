@@ -1,7 +1,8 @@
 import React from "react";
+import { ISearchPagination } from "./Interfaces";
 import "./SearchPagination.scss";
 
-export default function SearchPagination(props: { filmsPerPage: number; totalFilmsNumber: number; currentPage: number; changePage: Function }) {
+export default function SearchPagination(props: ISearchPagination) {
   const pages: Array<number> = [];
   for (let i = 1; i <= Math.ceil(props.totalFilmsNumber / props.filmsPerPage); i++) {
     pages.push(i);

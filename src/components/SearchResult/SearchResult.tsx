@@ -1,9 +1,10 @@
 import React, { ReactElement } from "react";
 import "./SearchResult.scss";
-import { IFilmsItemAPI, IFilmsItemsAPI } from "../Featured/Interfaces";
+import { IFilmsItemAPI } from "../Featured/Interfaces";
 import Thumbnail from "../Thumbnail/Thumbnail";
+import { ISearchResult } from "./Interfaces";
 
-export default function SearchResult(props: { films: IFilmsItemsAPI }) {
+export default function SearchResult(props: ISearchResult) {
   return (
     <div className="search-result">
       {props.films.map(

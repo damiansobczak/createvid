@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Featured.scss";
 import { Link } from "react-router-dom";
-import axios, { AxiosResponse } from "axios";
-import { IFilmsAPI, IFilmsItemAPI, IFilmsItemsAPI } from "./Interfaces";
+import { IFilmsItemAPI, IFilmsItemsAPI } from "./Interfaces";
 import Thumbnail from "../Thumbnail/Thumbnail";
+import { AppContext } from "../../AppContext";
 
 export default function Featured() {
   const [films, setFilms] = useState<IFilmsItemsAPI>([]);
   const [slide, setSlide] = useState(0);
+  const context = useContext(AppContext);
+
+  const limit = 10;
 
   useEffect(() => {
-    axios.get("https://itunes.apple.com/us/rss/topmovies/limit=100/json").then((res: AxiosResponse<IFilmsAPI>) => setFilms(res.data.feed.entry));
-  }, []);
+    setFilms(context.films);
+  }, [context]);
 
   const slideLeft = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,8 +30,6 @@ export default function Featured() {
     }
   };
 
-  const limit = 10;
-
   return (
     <div className="featured">
       <div className="featured__header">
@@ -39,7 +40,7 @@ export default function Featured() {
         </Link>
       </div>
       <div className="featured__items" style={{ transform: `translateX(calc(${slide * 28 * -1}% - ${16 * slide}px)` }}>
-        {films.map((details: IFilmsItemAPI, index: number) => index < 10 && <Thumbnail key={details.id.label} isHover={true} {...details} />)}
+        {films.map((details: IFilmsItemAPI, index: number) => index < limit && <Thumbnail key={details.id.label} isHover={true} {...details} />)}
       </div>
       <button className="featured__nav" onClick={slideLeft}>
         <span className="icon-chevron-left"></span>
