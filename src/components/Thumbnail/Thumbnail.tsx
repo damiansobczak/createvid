@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { ThumbnailContext } from "../../contexts/ThumbnailContext";
 import { IThumbnailItem } from "./Interfaces";
 import "./Thumbnail.scss";
 
@@ -11,6 +12,7 @@ export default function Thumbnail(props: IThumbnailItem) {
   const el = useRef<HTMLVideoElement>(null);
   const [media, setMedia] = useState<Media>(Media.thumbnail);
   const [time, setTime] = useState<any>(null);
+  const { state, dispatch } = useContext(ThumbnailContext);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setTime(
@@ -31,7 +33,11 @@ export default function Thumbnail(props: IThumbnailItem) {
   };
 
   return (
-    <div className={`thumbnail ${props.isHover && `thumbnail--hover`}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className={`thumbnail ${state.dislike.includes(props.id.attributes["im:id"]) && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {media === Media.thumbnail ? (
         <img className="thumbnail__media" src={props["im:image"][2].label} alt={props["im:name"].label} />
       ) : (
@@ -41,10 +47,16 @@ export default function Thumbnail(props: IThumbnailItem) {
         </video>
       )}
       <div className="thumbnail__header">
-        <button className="thumbnail__action">
+        <button
+          className={`thumbnail__action ${state.like.includes(props.id.attributes["im:id"]) && "thumbnail__action--active"}`}
+          onClick={() => dispatch({ type: "LIKE", payload: props.id.attributes["im:id"] })}
+        >
           <span className="icon-thumbs-up"></span>
         </button>
-        <button className="thumbnail__action">
+        <button
+          className={`thumbnail__action ${state.dislike.includes(props.id.attributes["im:id"]) && "thumbnail__action--active"}`}
+          onClick={() => dispatch({ type: "DISLIKE", payload: props.id.attributes["im:id"] })}
+        >
           <span className="icon-thumbs-down"></span>
         </button>
         {props["im:rentalPrice"]?.label && <div className="thumbnail__price">{props["im:rentalPrice"].label}</div>}

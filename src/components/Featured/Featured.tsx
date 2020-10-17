@@ -1,20 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Featured.scss";
 import { Link } from "react-router-dom";
-import { IFilmsItemAPI, IFilmsItemsAPI } from "./Interfaces";
+import { IFilmsAPI, IFilmsItemAPI, IFilmsItemsAPI } from "./Interfaces";
 import Thumbnail from "../Thumbnail/Thumbnail";
-import { AppContext } from "../../AppContext";
+import axios, { AxiosResponse } from "axios";
 
 export default function Featured() {
   const [films, setFilms] = useState<IFilmsItemsAPI>([]);
   const [slide, setSlide] = useState(0);
-  const context = useContext(AppContext);
 
   const limit = 10;
 
   useEffect(() => {
-    setFilms(context.films);
-  }, [context]);
+    axios.get("https://itunes.apple.com/us/rss/topmovies/limit=10/json").then((res: AxiosResponse<IFilmsAPI>) => setFilms(res.data.feed.entry));
+  }, []);
 
   const slideLeft = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

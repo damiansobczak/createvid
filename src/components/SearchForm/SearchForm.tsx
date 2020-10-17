@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./SearchForm.scss";
-import { AppContext } from "../../AppContext";
 import { IFilmsItemAPI } from "../Featured/Interfaces";
 import { ISearchForm } from "./Interfaces";
+import { SearchContext } from "../../contexts/SearchContext";
 
 export default function SearchForm(props: ISearchForm) {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
   const [categories, setCategories] = useState<Array<string>>([]);
-  const context = React.useContext(AppContext);
+  const { state, dispatch } = useContext(SearchContext);
 
   useEffect(() => {
     let cat: Array<string> = [];
-    context.films.map((item: IFilmsItemAPI) => !cat.includes(item.category.attributes.label) && cat.push(item.category.attributes.label));
+    state.films.map((item: IFilmsItemAPI) => !cat.includes(item.category.attributes.label) && cat.push(item.category.attributes.label));
     setCategories(cat);
-  }, [context.films]);
+  }, [state.films]);
 
   const submit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    context.updateSearch({ text, category });
+    dispatch({ type: "SEARCH", payload: { text, category } });
     props.updatePagination(1);
   };
 

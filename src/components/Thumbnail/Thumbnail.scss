@@ -23,6 +23,11 @@
     }
   }
 
+  &--dislike {
+    filter: saturate(0);
+    opacity: 0.5;
+  }
+
   &--hover {
     &:hover {
       min-width: 600px;
@@ -63,6 +68,10 @@
 
     &:first-child {
       margin-right: 12px;
+    }
+
+    &--active {
+      background-color: $color-accent;
     }
   }
 
