@@ -28,7 +28,10 @@ export default function Popup(props: IPopupProps) {
   if (!props.items.length) {
     return (
       <div className={`popup ${open ? "popup--active" : ""}`} ref={el}>
-        No items
+        <div className="popup__empty">
+          Your favorites are empty :(
+          <p>You can add something by hovering over on any thumbnail of your choice.</p>
+        </div>
       </div>
     );
   }

@@ -69,4 +69,15 @@
   &__desc {
     color: $color-text-secondary;
   }
+
+  &__empty {
+    font-size: $font-large;
+    font-weight: 600;
+    padding: 30px 0;
+
+    p {
+      margin-top: 10px;
+      font-weight: 400;
+    }
+  }
 }

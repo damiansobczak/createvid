@@ -38,7 +38,7 @@ export default function Featured() {
           <span className="icon-arrow-right"></span>
         </Link>
       </div>
-      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 28 * -1}% - ${16 * slide}px)` }}>
+      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 28 * -1}%)` }}>
         {films.map((details: IFilmsItemAPI, index: number) => index < limit && <Thumbnail key={details.id.label} isHover={true} {...details} />)}
       </div>
       <button className="featured__nav" onClick={slideLeft}>
