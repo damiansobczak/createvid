@@ -24,6 +24,22 @@
     justify-content: space-between;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 54px 0 0;
+
+    @include breakpoint-down(md) {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    @include breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &__nav {
+    @include breakpoint-down(md) {
+      display: none;
+    }
   }
 
   &__social {

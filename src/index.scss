@@ -1,5 +1,6 @@
 @import "./assets/styles/base/reset.scss";
 @import "./assets/styles/utils/variables.scss";
+@import "./assets/styles/utils/mixins.scss";
 @import "./assets/styles/base/fonts.scss";
 @import "./assets/styles/utils/grid.scss";
 
@@ -11,12 +12,21 @@ body {
   font-weight: 400;
   font-style: normal;
   background-color: $color-bg;
+
+  @include breakpoint-down(sm) {
+    font-size: 14px;
+  }
 }
 
 h1 {
-  font-size: $font-xlarge;
+  font-size: $font-xxlarge;
   font-weight: 700;
   margin: 0;
+  line-height: 1.4;
+
+  @include breakpoint-down(sm) {
+    font-size: $font-xlarge;
+  }
 }
 
 h2 {
@@ -26,14 +36,18 @@ h2 {
 }
 
 h5 {
-  font-size: 40px;
+  font-size: $font-xlarge;
   font-weight: 600;
   color: $color-text-primary;
   line-height: 1.1;
+
+  @include breakpoint-down(sm) {
+    font-size: $font-large;
+  }
 }
 
 h6 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: $color-text-primary;
 }

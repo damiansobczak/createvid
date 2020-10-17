@@ -6,6 +6,11 @@
   justify-content: center;
   align-items: center;
   margin: 32px 0;
+  $search-form: &;
+
+  @include breakpoint-down(sm) {
+    flex-wrap: wrap;
+  }
 
   &__input,
   &__select,
@@ -23,11 +28,27 @@
 
   &__input {
     width: 380px;
+
+    @include breakpoint-down(sm) {
+      width: 100%;
+      margin-bottom: 6px;
+    }
   }
 
   &__select {
     width: 160px;
     margin: 0 8px;
+    color: $color-text-secondary;
+
+    @include breakpoint-down(md) {
+      width: 130px;
+    }
+
+    @include breakpoint-down(sm) {
+      flex: 1;
+      width: initial;
+      margin: 0 8px 0 0;
+    }
   }
 
   &__submit {
@@ -42,6 +63,18 @@
 
     span {
       margin-right: 8px;
+
+      @include breakpoint-down(md) {
+        margin: 0;
+      }
+    }
+
+    span:last-child {
+      color: inherit;
+
+      @include breakpoint-down(md) {
+        display: none;
+      }
     }
   }
 }

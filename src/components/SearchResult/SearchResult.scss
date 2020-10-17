@@ -5,4 +5,16 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+  .thumbnail {
+    @include breakpoint-down(md) {
+      min-width: 46%;
+      width: 46%;
+    }
+
+    @include breakpoint-down(sm) {
+      min-width: 44%;
+      width: 44%;
+    }
+  }
 }

@@ -40,7 +40,7 @@ export default function SearchForm(props: ISearchForm) {
       </select>
       <button className="search-form__submit">
         <span className="icon-search"></span>
-        Search
+        <span>Search</span>
       </button>
     </form>
   );
