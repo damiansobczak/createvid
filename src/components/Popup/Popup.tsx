@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "./Popup.scss";
 import { IPopupProps } from "./Interfaces";
 import { IFilmsItemAPI } from "../Featured/Interfaces";
+import { ModalContext } from "../../contexts/ModalContext";
 
 export default function Popup(props: IPopupProps) {
+  const { modalDispatch } = useContext(ModalContext);
   const [open, setOpen] = useState(props.open);
   const el = useRef<HTMLDivElement>(null);
 
@@ -39,7 +41,7 @@ export default function Popup(props: IPopupProps) {
   return (
     <div className={`popup ${open ? "popup--active" : ""}`} ref={el}>
       {props.items.map((item: IFilmsItemAPI) => (
-        <div className="popup__item" key={item.id.attributes["im:id"]}>
+        <div className="popup__item" key={item.id.attributes["im:id"]} onClick={() => modalDispatch({ type: "LOAD", payload: item })}>
           <img className="popup__media" src={item["im:image"][2].label} alt={item["im:name"].label} />
           <div className="popup__info">
             <div className="popup__title">{item["im:name"].label}</div>
