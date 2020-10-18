@@ -19,7 +19,7 @@ export default function Thumbnail(props: IThumbnailItem) {
       setTimeout(() => {
         setMedia(Media.video);
         el.current?.play();
-      }, 600)
+      }, 400)
     );
   };
 
@@ -32,9 +32,12 @@ export default function Thumbnail(props: IThumbnailItem) {
     }
   };
 
+  const isLiked = state.like.filter((item) => item.id.attributes["im:id"] === props.id.attributes["im:id"]).length ? true : false;
+  const isDisliked = state.dislike.filter((item) => item.id.attributes["im:id"] === props.id.attributes["im:id"]).length ? true : false;
+
   return (
     <div
-      className={`thumbnail ${state.dislike.includes(props) && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
+      className={`thumbnail ${isDisliked && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -47,16 +50,10 @@ export default function Thumbnail(props: IThumbnailItem) {
         </video>
       )}
       <div className="thumbnail__header">
-        <button
-          className={`thumbnail__action ${state.like.includes(props) && "thumbnail__action--active"}`}
-          onClick={() => dispatch({ type: "LIKE", payload: props })}
-        >
+        <button className={`thumbnail__action ${isLiked && "thumbnail__action--active"}`} onClick={() => dispatch({ type: "LIKE", payload: props })}>
           <span className="icon-thumbs-up"></span>
         </button>
-        <button
-          className={`thumbnail__action ${state.dislike.includes(props) && "thumbnail__action--active"}`}
-          onClick={() => dispatch({ type: "DISLIKE", payload: props })}
-        >
+        <button className={`thumbnail__action ${isDisliked && "thumbnail__action--active"}`} onClick={() => dispatch({ type: "DISLIKE", payload: props })}>
           <span className="icon-thumbs-down"></span>
         </button>
         {props["im:rentalPrice"]?.label && <div className="thumbnail__price">{props["im:rentalPrice"].label}</div>}
