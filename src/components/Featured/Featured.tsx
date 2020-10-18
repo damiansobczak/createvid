@@ -24,7 +24,7 @@ export default function Featured() {
 
   const slideRight = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (slide < limit) {
+    if (slide < limit - 1) {
       setSlide(() => slide + 1);
     }
   };
@@ -38,7 +38,7 @@ export default function Featured() {
           <span className="icon-arrow-right"></span>
         </Link>
       </div>
-      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 28 * -1}%)` }}>
+      <div className="featured__items" style={{ transform: `translateX(calc(${slide * 360 * -1 - 16 * slide}px)` }}>
         {films.map((details: IFilmsItemAPI, index: number) => index < limit && <Thumbnail key={details.id.label} isHover={true} {...details} />)}
       </div>
       <button className="featured__nav" onClick={slideLeft}>

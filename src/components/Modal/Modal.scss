@@ -26,6 +26,13 @@
     @include breakpoint-down(lg) {
       width: 85%;
     }
+
+    @include breakpoint-down(sm) {
+      width: 100vw;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
   }
 
   &__header {
@@ -37,12 +44,20 @@
     color: $color-text-primary;
   }
 
+  &__title {
+    @include breakpoint-down(sm) {
+      font-size: $font-regular;
+    }
+  }
+
   &__close {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: $font-large;
+    min-width: 54px;
     width: 54px;
+    min-height: 54px;
     height: 54px;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
