@@ -17,4 +17,11 @@
       width: 44%;
     }
   }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    color: $color-text-primary;
+    text-align: center;
+  }
 }

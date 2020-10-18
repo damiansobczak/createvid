@@ -1,34 +1,39 @@
 import React, { useState, useRef, useContext } from "react";
+import { ModalContext } from "../../contexts/ModalContext";
 import { ThumbnailContext } from "../../contexts/ThumbnailContext";
-import { IThumbnailItem } from "./Interfaces";
+import { IThumbnailItem, EnumMedia } from "./Interfaces";
 import "./Thumbnail.scss";
 
-enum Media {
-  thumbnail = "thumbnail",
-  video = "video",
-}
-
 export default function Thumbnail(props: IThumbnailItem) {
-  const el = useRef<HTMLVideoElement>(null);
-  const [media, setMedia] = useState<Media>(Media.thumbnail);
+  const videoElement = useRef<HTMLVideoElement>(null);
+  const actionsElement = useRef<HTMLDivElement>(null);
+
+  const [media, setMedia] = useState<EnumMedia>(EnumMedia.thumbnail);
   const [time, setTime] = useState<any>(null);
   const { state, dispatch } = useContext(ThumbnailContext);
+  const { modalDispatch } = useContext(ModalContext);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setTime(
       setTimeout(() => {
-        setMedia(Media.video);
-        el.current?.play();
+        setMedia(EnumMedia.video);
+        videoElement.current?.play();
       }, 400)
     );
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     if (time) {
-      setMedia(Media.thumbnail);
-      el.current?.pause();
+      setMedia(EnumMedia.thumbnail);
+      videoElement.current?.pause();
       clearTimeout(time);
       setTime(null);
+    }
+  };
+
+  const handleOpenModal = (e: any) => {
+    if (!actionsElement.current?.contains(e.target)) {
+      modalDispatch({ type: "LOAD", payload: props });
     }
   };
 
@@ -40,16 +45,17 @@ export default function Thumbnail(props: IThumbnailItem) {
       className={`thumbnail ${isDisliked && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={(e) => handleOpenModal(e)}
     >
-      {media === Media.thumbnail ? (
+      {media === EnumMedia.thumbnail ? (
         <img className="thumbnail__media" src={props["im:image"][2].label} alt={props["im:name"].label} />
       ) : (
-        <video className="thumbnail__media" width="100" height="100" ref={el}>
+        <video className="thumbnail__media" width="100" height="100" ref={videoElement}>
           <source src={props.link[1].attributes.href} type={props.link[1].attributes.type} />
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="thumbnail__header">
+      <div className="thumbnail__header" ref={actionsElement}>
         <button className={`thumbnail__action ${isLiked && "thumbnail__action--active"}`} onClick={() => dispatch({ type: "LIKE", payload: props })}>
           <span className="icon-thumbs-up"></span>
         </button>

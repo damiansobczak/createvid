@@ -5,6 +5,7 @@ import Featured from "../components/Featured/Featured";
 import Copyright from "../components/Copyright/Copyright";
 import Footer from "../components/Footer/Footer";
 import Search from "../components/Search/Search";
+import Modal from "../components/Modal/Modal";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Search />
       <Footer />
       <Copyright />
+      <Modal />
     </>
   );
 }

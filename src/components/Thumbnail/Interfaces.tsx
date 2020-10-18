@@ -1,3 +1,8 @@
+export enum EnumMedia {
+  thumbnail = "thumbnail",
+  video = "video",
+}
+
 export interface IThumbnailItem {
   "im:name": {
     label: string;

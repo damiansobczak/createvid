@@ -9,6 +9,7 @@ export interface ISliderItemAPI {
   genre: string;
   duration: number;
   image: string;
+  rental: string;
 }
 
 export interface ISliderItemsAPI extends Array<ISliderItemAPI> {}
@@ -23,6 +24,7 @@ export const SliderAPI: ISliderItemsAPI = [
     genre: "Sci-Fi",
     duration: 9000,
     image: Slider,
+    rental: "$12.99",
   },
   {
     id: 1,
@@ -33,5 +35,6 @@ export const SliderAPI: ISliderItemsAPI = [
     genre: "Action",
     duration: 9000,
     image: Slider2,
+    rental: "$12.99",
   },
 ];

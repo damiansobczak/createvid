@@ -28,7 +28,7 @@ export default function Slider() {
   return (
     <div className="slider" style={{ backgroundImage: `url(${sliders[slide]?.image})` }}>
       <div className="slider__items" style={{ transform: `translateX(${slide * 100 * -1}%)` }}>
-        {sliders.map(({ id, title, desc, image, duration, genre, year }: ISliderItemAPI) => (
+        {sliders.map(({ id, title, desc, duration, genre, year, rental }: ISliderItemAPI) => (
           <div className="slider__item" key={id}>
             <div className="slider__container">
               <div className="slider__tags">
@@ -40,14 +40,10 @@ export default function Slider() {
               </h1>
               <p className="slider__desc">{desc}</p>
               <div className="slider__actions">
-                <button className="slider__action">
-                  <span className="icon-play"></span>
-                  <span>Play Now</span>
-                </button>
-                <button className="slider__action slider__action--secondary">
+                <div className="slider__action">
                   <span className="icon-info"></span>
-                  <span>More Information</span>
-                </button>
+                  <span>Starts from {rental}</span>
+                </div>
               </div>
             </div>
           </div>

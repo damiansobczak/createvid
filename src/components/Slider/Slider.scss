@@ -119,6 +119,9 @@
   }
 
   &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     color: #fff;
     height: 64px;
@@ -127,16 +130,6 @@
     background-color: $color-accent;
     font-size: $font-regular;
     outline: 0;
-    cursor: pointer;
-    transition: opacity 0.12s ease-in-out;
-
-    &:hover {
-      opacity: 0.7;
-    }
-
-    &:last-child {
-      margin-left: 24px;
-    }
 
     &--secondary {
       background-color: $color-bg-secondary;
