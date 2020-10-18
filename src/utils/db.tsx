@@ -1,4 +1,5 @@
 import Slider from "../assets/images/slider-1.png";
+import Slider2 from "../assets/images/slider-2.png";
 
 export interface ISliderItemAPI {
   id: number;
@@ -17,7 +18,7 @@ export const SliderAPI: ISliderItemsAPI = [
     id: 0,
     title: "Mulan",
     desc:
-      "Ava (Jessica Chastain) is a deadly assassin who works for a black ops organization, traveling the globe specializing in high profile hits. When a job goes dangerously wrong she is forced to fight for her own survival.",
+      "When the Emperor mobilizes his troops to fight the onslaught of invaders from the North, she masquerades as a man to take the place of her ailing father under the name Hua Jun, setting her on an adventure.",
     year: "(2020)",
     genre: "Sci-Fi",
     duration: 9000,
@@ -25,21 +26,12 @@ export const SliderAPI: ISliderItemsAPI = [
   },
   {
     id: 1,
-    title: "Mulan Test",
+    title: "Tenet",
     desc:
-      "Ava (Jessica Chastain) is a deadly assassin who works for a black ops organization, traveling the globe specializing in high profile hits. When a job goes dangerously wrong she is forced to fight for her own survival.",
+      "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
     year: "(2020)",
-    genre: "Sci-Fi",
+    genre: "Action",
     duration: 9000,
-    image: Slider,
+    image: Slider2,
   },
 ];
-
-export interface IPopupAPI {
-  id: number;
-  title: string;
-  desc: string;
-  thumbnail: string;
-}
-
-export interface IPopupItemsAPI extends Array<IPopupAPI> {}

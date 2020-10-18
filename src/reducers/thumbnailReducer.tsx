@@ -1,6 +1,8 @@
+import { IFilmsItemAPI, IFilmsItemsAPI } from "../components/Featured/Interfaces";
+
 export interface IState {
-  like: Array<string>;
-  dislike: Array<string>;
+  like: IFilmsItemsAPI;
+  dislike: IFilmsItemsAPI;
 }
 
 export const thumbnailInitialState = {
@@ -8,7 +10,7 @@ export const thumbnailInitialState = {
   dislike: [],
 };
 
-type ACTIONTYPE = { type: "LIKE"; payload: string } | { type: "DISLIKE"; payload: string };
+type ACTIONTYPE = { type: "LIKE"; payload: IFilmsItemAPI } | { type: "DISLIKE"; payload: IFilmsItemAPI };
 
 export function thumbnailReducer(state: IState, action: ACTIONTYPE) {
   switch (action.type) {

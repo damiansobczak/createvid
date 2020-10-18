@@ -16,11 +16,18 @@ export default function Footer() {
         </div>
         <div className="grid__col--12 grid__col--sm-6 grid__col--lg-3">
           <h6>Office Address</h6>
-          <p>Patricia C. Amedee 4401 Waldeck Street Grapevine Nashville, Tx 76051</p>
+          <p>
+            Patricia C. Amedee 4401 <br />
+            Waldeck Street Grapevine Nashville, <br />
+            Tx 76051
+          </p>
         </div>
         <div className="grid__col--12 grid__col--sm-6 grid__col--lg-3">
           <h6>Office Address</h6>
-          <p>info@yourdomain.com, +7 (212) 654-33-35</p>
+          <p>
+            info@yourdomain.com, <br />
+            +7 (212) 654-33-35
+          </p>
         </div>
         <div className="footer__bottom grid__col--12">
           <div className="footer__logo">

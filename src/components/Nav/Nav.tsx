@@ -19,12 +19,12 @@ export default function Nav() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/categories" className="nav__link">
+          <Link to="/" className="nav__link">
             Categories
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/settings" className="nav__link">
+          <Link to="/" className="nav__link">
             Settings
           </Link>
         </li>

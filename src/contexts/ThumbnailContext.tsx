@@ -1,9 +1,10 @@
 import React from "react";
+import { IFilmsItemsAPI } from "../components/Featured/Interfaces";
 
 export interface IThumbnailContext {
   state: {
-    like: Array<string>;
-    dislike: Array<string>;
+    like: IFilmsItemsAPI;
+    dislike: IFilmsItemsAPI;
   };
   dispatch?: any;
 }

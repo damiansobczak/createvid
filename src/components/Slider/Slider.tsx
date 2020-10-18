@@ -36,8 +36,7 @@ export default function Slider() {
                 <div className="slider__tag">{durationFormat(duration)}</div>
               </div>
               <h1 className="slider__title">
-                {title}
-                {year}
+                {title} {year}
               </h1>
               <p className="slider__desc">{desc}</p>
               <div className="slider__actions">

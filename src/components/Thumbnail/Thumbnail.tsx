@@ -34,7 +34,7 @@ export default function Thumbnail(props: IThumbnailItem) {
 
   return (
     <div
-      className={`thumbnail ${state.dislike.includes(props.id.attributes["im:id"]) && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
+      className={`thumbnail ${state.dislike.includes(props) && "thumbnail--dislike"} ${props.isHover && `thumbnail--hover`}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -48,14 +48,14 @@ export default function Thumbnail(props: IThumbnailItem) {
       )}
       <div className="thumbnail__header">
         <button
-          className={`thumbnail__action ${state.like.includes(props.id.attributes["im:id"]) && "thumbnail__action--active"}`}
-          onClick={() => dispatch({ type: "LIKE", payload: props.id.attributes["im:id"] })}
+          className={`thumbnail__action ${state.like.includes(props) && "thumbnail__action--active"}`}
+          onClick={() => dispatch({ type: "LIKE", payload: props })}
         >
           <span className="icon-thumbs-up"></span>
         </button>
         <button
-          className={`thumbnail__action ${state.dislike.includes(props.id.attributes["im:id"]) && "thumbnail__action--active"}`}
-          onClick={() => dispatch({ type: "DISLIKE", payload: props.id.attributes["im:id"] })}
+          className={`thumbnail__action ${state.dislike.includes(props) && "thumbnail__action--active"}`}
+          onClick={() => dispatch({ type: "DISLIKE", payload: props })}
         >
           <span className="icon-thumbs-down"></span>
         </button>

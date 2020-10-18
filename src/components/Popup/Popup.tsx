@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Popup.scss";
-import { IPopupAPI } from "../../utils/db";
 import { IPopupProps } from "./Interfaces";
+import { IFilmsItemAPI } from "../Featured/Interfaces";
 
 export default function Popup(props: IPopupProps) {
   const [open, setOpen] = useState(props.open);
@@ -38,12 +38,12 @@ export default function Popup(props: IPopupProps) {
 
   return (
     <div className={`popup ${open ? "popup--active" : ""}`} ref={el}>
-      {props.items.map((item: IPopupAPI) => (
-        <div className="popup__item" key={item.id}>
-          <img className="popup__media" src={item.thumbnail} alt="" />
+      {props.items.map((item: IFilmsItemAPI) => (
+        <div className="popup__item" key={item.id.attributes["im:id"]}>
+          <img className="popup__media" src={item["im:image"][2].label} alt={item["im:name"].label} />
           <div className="popup__info">
-            <div className="popup__title">{item.title}</div>
-            <div className="popup__desc">{item.desc}</div>
+            <div className="popup__title">{item["im:name"].label}</div>
+            <div className="popup__desc">{item.summary.label}</div>
           </div>
         </div>
       ))}
