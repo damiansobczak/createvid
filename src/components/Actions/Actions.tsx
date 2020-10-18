@@ -12,7 +12,7 @@ export default function Actions() {
     <div className="actions">
       <button className="actions__item" onClick={() => setFavorite((prevState) => !prevState)}>
         {state.like.length ? <span className="actions__counter">{state.like.length}</span> : null}
-        <span className="icon-heart" ref={elFavorite}></span>
+        <span className="icon-thumbs-up" ref={elFavorite}></span>
         <Popup open={favorite} setOpen={setFavorite} trigger={elFavorite} items={state.like} />
       </button>
       <button className="actions__item">

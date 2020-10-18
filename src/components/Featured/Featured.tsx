@@ -33,7 +33,7 @@ export default function Featured() {
     <div className="featured">
       <div className="featured__header">
         <div className="featured__title">Proposed to you</div>
-        <Link to="/categories" className="featured__more">
+        <Link to="/" className="featured__more">
           More
           <span className="icon-arrow-right"></span>
         </Link>

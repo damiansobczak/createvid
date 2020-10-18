@@ -16,7 +16,7 @@ export function thumbnailReducer(state: IState, action: ACTIONTYPE) {
   switch (action.type) {
     case "LIKE":
       const disliked = state.dislike.find((element: IFilmsItemAPI) => element.id.attributes["im:id"] === action.payload.id.attributes["im:id"]);
-      return !state.like.includes(action.payload)
+      return !state.like.find((element: IFilmsItemAPI) => element.id.attributes["im:id"] === action.payload.id.attributes["im:id"])
         ? {
             ...state,
             like: [...state.like, action.payload],
@@ -25,7 +25,7 @@ export function thumbnailReducer(state: IState, action: ACTIONTYPE) {
         : { ...state };
     case "DISLIKE":
       const liked = state.like.find((element: IFilmsItemAPI) => element.id.attributes["im:id"] === action.payload.id.attributes["im:id"]);
-      return !state.dislike.includes(action.payload)
+      return !state.dislike.find((element: IFilmsItemAPI) => element.id.attributes["im:id"] === action.payload.id.attributes["im:id"])
         ? {
             ...state,
             like: liked ? [...state.like.filter((item) => !(item === liked))] : [...state.like],
